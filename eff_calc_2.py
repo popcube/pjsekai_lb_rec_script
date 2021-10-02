@@ -6,7 +6,7 @@ plt.rcParams["font.family"] = "sans-serif"
 plt.rcParams["font.sans-serif"] = ["Meiryo"]
 
 ## 消費ライフボーナスリスト、ライブ報酬リスト、イベント報酬リストの作成
-lb_list = [i for i in range(11)
+lb_list = [i for i in range(11)]
 lv_rewd = [1, 5, 10, 14, 17, 20, 21, 22, 23, 24, 25]
 ev_rewd = [1, 5, 10, 15, 19, 23, 26, 29, 31, 33, 35]
 
