@@ -28,7 +28,7 @@ tot_res_list=[[0 for i in range(len(y_list))]]
 ## x軸メインループ
 for x in xlog_list[1:]:
     ## 処理進捗通知用
-    if　xlog_list.index(x)%5000 == 0:
+    if xlog_list.index(x)%5000 == 0:
         print(xlog_list.index(x))
 
     ## あるxのときのライブボーナス消費量リストのゼロ埋め初期化
