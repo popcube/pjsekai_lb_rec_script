@@ -1,3 +1,5 @@
+"""Only used to display a efficiency diagram"""
+
 from matplotlib import pyplot as plt
 from matplotlib import ticker, cm, colors
 
@@ -6,7 +8,7 @@ plt.rcParams["font.family"] = "sans-serif"
 plt.rcParams["font.sans-serif"] = ["Meiryo"]
 
 ## 消費ライフボーナスリスト、ライブ報酬リスト、イベント報酬リストの作成
-lb_list = [i for i in range(11)]
+lb_list = list(range(11))
 lv_rewd = [1, 5, 10, 14, 17, 20, 21, 22, 23, 24, 25]
 ev_rewd = [1, 5, 10, 15, 19, 23, 26, 29, 31, 33, 35]
 
@@ -26,12 +28,13 @@ tot_res_list=[[0 for i in range(len(y_list))]]
 ## x軸メインループ
 for x in xlog_list[1:]:
     ## 処理進捗通知用
-    if(xlog_list.index(x)%5000 == 0): print(xlog_list.index(x))
-    
+    if　xlog_list.index(x)%5000 == 0:
+        print(xlog_list.index(x))
+
     ## あるxのときのライブボーナス消費量リストのゼロ埋め初期化
     lv_temp_list=[0 for j in range(11)]
     ev_temp_list=[0 for j in range(11)]
-    
+
     ## ライブボーナス消費量メインループ
     for j in range(11):
         ## ライブ報酬のみ、イベント報酬のみで効率計算
@@ -44,7 +47,7 @@ for x in xlog_list[1:]:
     ## ライブ報酬のみ、イベント報酬のみの最大効率のライブボーナス消費量リストに追加
     lv_res_list.append(max_lv)
     ev_res_list.append(max_ev)
-    
+
     ## あるxのときのトータルライブボーナス消費量リストの初期化
     ## yがゼロの時の値は、ライブ報酬のみの効率最大値になる
     tot_res_temp = [max_lv]
@@ -75,7 +78,7 @@ for i, y_temp in enumerate(tot_res_list):
             print(res_temp, f'x軸：{x_list[j]:.3f}', f'y軸：{y_list[i]:.1f}')
 
 ## グラフ2表示のためのリスト作成
-colorbar_labels = [i for i in range(11)]
+colorbar_labels = list(range(11))
 tick_labels = ["0"] + ["" for i in range(1, 10)] + ["大"]
 
 ## グラフ1作成
@@ -93,7 +96,7 @@ ax1.set_xlabel('時間感覚')
 
 ## y軸のメモリとラベル作成
 ax1.set_ylim(-1,11)
-ax1.set_yticks([i for i in range(11)])
+ax1.set_yticks(list(range(11)))
 ax1.grid(axis='y')
 ax1.set_ylabel('ライブボーナス消費量')
 
@@ -103,7 +106,8 @@ ax1.legend(bbox_to_anchor=(0,1), loc='upper left')
 ## グラフ2作成
 ## カラーマップは"tab20c"の最初の11色、内挿なし、グラフ外形正方形、最小値0.5、最大値0.5、ゼロ点左下
 fig2, ax2 = plt.subplots()
-ax2.imshow(tot_res_list, cmap=cm.get_cmap("tab20c", 11), interpolation='none', aspect='auto', vmin=-0.5, vmax=10.5, origin='lower')
+ax2.imshow(tot_res_list, cmap=cm.get_cmap("tab20c", 11)\
+    , interpolation='none', aspect='auto', vmin=-0.5, vmax=10.5, origin='lower')
 ax2.set_title("イベント時\nライブボーナス消費量オススメ2")
 
 ## x軸のメモリとラベル作成
@@ -117,7 +121,8 @@ ax2.set_yticklabels(tick_labels)
 ax2.set_ylabel("イベント報酬重視率")
 
 ## カラーバーの作成
-fig2mp = cm.ScalarMappable(norm=colors.Normalize(vmin=-0.5, vmax=10.5), cmap=cm.get_cmap("tab20c", 11))
+fig2mp = cm.ScalarMappable(norm=colors.Normalize(vmin=-0.5, vmax=10.5)\
+    , cmap=cm.get_cmap("tab20c", 11))
 fig2.colorbar(mappable=fig2mp, ticks=colorbar_labels)
 
 ## 同じ階層のフォルダにグラフを保存して表示
