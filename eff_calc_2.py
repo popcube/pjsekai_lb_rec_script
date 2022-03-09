@@ -5,7 +5,7 @@ from matplotlib import ticker, cm, colors
 
 ## 日本語表示用にフォント設定
 plt.rcParams["font.family"] = "sans-serif"
-plt.rcParams["font.sans-serif"] = ["Meiryo"]
+plt.rcParams["font.sans-serif"] = ["Meiryo", "Noto Sans CJK JP"]
 
 ## 消費ライフボーナスリスト、ライブ報酬リスト、イベント報酬リストの作成
 lb_list = list(range(11))
