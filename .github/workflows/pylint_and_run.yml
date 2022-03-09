@@ -31,6 +31,6 @@ jobs:
       name: Upload image
       uses: actions/upload-artifact@v2
       with:
-        name: "product"
-        path: /*.png
+        name: product all
+        path: ${{ github.workspace }}
 
